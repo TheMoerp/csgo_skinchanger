@@ -142,10 +142,13 @@
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="hook.cpp" />
     <ClCompile Include="skinchanger.cpp" />
+    <ClCompile Include="skins.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hook.h" />
+    <ClInclude Include="offsets.h" />
     <ClInclude Include="skinchanger.h" />
+    <ClInclude Include="skins.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

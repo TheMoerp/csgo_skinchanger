@@ -24,12 +24,21 @@
     <ClCompile Include="hook.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="skins.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="skinchanger.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="hook.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="offsets.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="skins.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
