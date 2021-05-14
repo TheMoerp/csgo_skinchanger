@@ -1,37 +1,15 @@
 #include "skinchanger.h"
+#include "skins.h"
 
 extern uintptr_t clientBase;
 
 int modelIndex = 0;
 
 
-int getKnifeIDef(int knifeID) {
-	switch (knifeID) {
-	case 0:
-		return 500;
-	case 2:
-		return 505;
-	case 4:
-		return 507;
-	case 5:
-		return 508;
-	case 6:
-		return 509;
-	case 7:
-		return 512;
-	case 14:
-		return 520;
-	case 16:
-		return 522;
-	default:
-		break;
-	}
-}
-
-
 void skinchanger() {
+	int knifeID = knifeID;
 	int knifeIDOffset = knifeID < 10 ? 0 : 1;
-	int knifeIDef = getKnifeIDef(knifeID);
+	int knifeIDef = getKnifeItemDefinition(knifeID);
 
 	uintptr_t localPlayer = *(uintptr_t*)(clientBase + dwLocalPlayer);
 
@@ -44,7 +22,7 @@ void skinchanger() {
 				short curWeaponID = *(short*)(curWeaponBase + m_iItemDefinitionIndex);
 
 				int curPaintKit = *(int*)(curWeaponBase + m_nFallbackPaintKit);
-				int paintKit = 44;;
+				int paintKit = 72;
 
 				if (curWeaponID == 42 || curWeaponID == 59 || curWeaponID == knifeIDef) {
 					if (modelIndex > 0) {
