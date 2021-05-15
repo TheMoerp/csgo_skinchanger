@@ -29,13 +29,14 @@ void skinchanger() {
 
 			if (curWeaponBase != 0) {
 				short curWeaponID = *(short*)(curWeaponBase + m_iItemDefinitionIndex);
-				cout << curWeaponID << endl;
+
 				// Sets everything but skin, modelindex, knifeItemID
 				*(int*)(curWeaponBase + m_iItemIDHigh) = -1;
 				*(int*)(curWeaponBase + m_nFallbackSeed) = 661;
 				*(float*)(curWeaponBase + m_flFallbackWear) = 0.00001f;
 
 				if (curWeaponID == 42 || curWeaponID == 59 || curWeaponID == knifeItemID) {
+
 					// curWeapon is knife
 					if (modelIndex > 0) {
 						int paintKit = getSkinID(knifeItemID);
