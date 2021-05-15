@@ -10,8 +10,8 @@ extern int choosenKnifeID;
 
 using namespace std;
 
-int modelIndex = 0;
 
+int modelIndex = 0;
 
 void skinchanger() {
 	int knifeID = choosenKnifeID;
