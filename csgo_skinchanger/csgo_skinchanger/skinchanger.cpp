@@ -74,7 +74,6 @@ void skinchanger() {
 			uintptr_t knifeViewModelBase = *(uintptr_t*)(clientBase + dwEntityList + (knifeViewModel - 1) * 0x10);
 
 			if (knifeViewModel != 0) {
-				*(short*)(activeWeaponBase + m_iItemDefinitionIndex) = knifeIDef;
 				*(uintptr_t*)(knifeViewModelBase + m_nModelIndex) = modelIndex;
 			}
 		}
