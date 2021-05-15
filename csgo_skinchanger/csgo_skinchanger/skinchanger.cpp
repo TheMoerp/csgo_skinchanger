@@ -14,9 +14,11 @@ using namespace std;
 int modelIndex = 0;
 
 void skinchanger() {
-	int knifeID = choosenKnifeID;
+	int knifeID = choosenKnifeID;	
+	// The offsets of knifemodels differs after the tenth knife
 	int knifeIDOffset = knifeID < 10 ? 0 : 1;
-	int knifeIDef = getKnifeItemDefinition(knifeID);
+	// 
+	int knifeItemID = getKnifeItemDefinition(knifeID);
 
 	uintptr_t localPlayer = *(uintptr_t*)(clientBase + dwLocalPlayer);
 
@@ -32,11 +34,11 @@ void skinchanger() {
 				*(int*)(curWeaponBase + m_nFallbackSeed) = 661;
 				*(float*)(curWeaponBase + m_flFallbackWear) = 0.00001f;
 
-				if (curWeaponID == 42 || curWeaponID == 59 || curWeaponID == knifeIDef) {
+				if (curWeaponID == 42 || curWeaponID == 59 || curWeaponID == knifeItemID) {
 					if (modelIndex > 0) {
-						int paintKit = getSkinID(knifeIDef);
+						int paintKit = getSkinID(knifeItemID);
 
-						*(short*)(curWeaponBase + m_iItemDefinitionIndex) = knifeIDef;
+						*(short*)(curWeaponBase + m_iItemDefinitionIndex) = knifeItemID;
 						*(int*)(curWeaponBase + m_nFallbackPaintKit) = paintKit;
 						*(uintptr_t*)(curWeaponBase + m_nModelIndex) = modelIndex;
 					}
@@ -58,15 +60,15 @@ void skinchanger() {
 
 			if (localPlayerTeam == 2 || localPlayerTeam == 3) {
 
-				if (activeWaeponID == 42 || (activeWaeponID == knifeIDef && localPlayerTeam == 3)) {
+				if (activeWaeponID == 42 || (activeWaeponID == knifeItemID && localPlayerTeam == 3)) {
 					modelIndex = weaponViewModelID + precache_bayonet_ct + knifeID * 3 + knifeIDOffset;
-					knifeIDef = getKnifeItemDefinition(knifeID);
+					knifeItemID = getKnifeItemDefinition(knifeID);
 				}
-				else if (activeWaeponID == 59 || (activeWaeponID == knifeIDef && localPlayerTeam == 2)) {
+				else if (activeWaeponID == 59 || (activeWaeponID == knifeItemID && localPlayerTeam == 2)) {
 					modelIndex = weaponViewModelID + precache_bayonet_t + knifeID * 3 + knifeIDOffset;
-					knifeIDef = getKnifeItemDefinition(knifeID);
+					knifeItemID = getKnifeItemDefinition(knifeID);
 				}
-				else if (activeWaeponID != knifeIDef) {
+				else if (activeWaeponID != knifeItemID) {
 					return;
 				}
 			}

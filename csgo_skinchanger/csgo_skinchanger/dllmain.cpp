@@ -14,8 +14,10 @@ FrameStageNotify oFrameStageNotify = nullptr;
 
 void _stdcall hkFrameStageNotify(ClientFrameStage_t curStage) {
 	if (curStage == FRAME_NET_UPDATE_POSTDATAUPDATE_START) {
+		// Skinchanger funktion
 		skinchanger();
 	}
+	// Calls original stage
 	oFrameStageNotify(curStage);
 }
 
@@ -24,8 +26,11 @@ void _stdcall hkFrameStageNotify(ClientFrameStage_t curStage) {
 DWORD WINAPI MainThread(HMODULE hModule) {
 	tCreateInterface clientFactory = (tCreateInterface)GetProcAddress(GetModuleHandleA("client.dll"), "CreateInterface");
 	void* client = clientFactory("VClient018", NULL);
+
+	// Get vTable
 	uintptr_t* clientVTable = (*reinterpret_cast<uintptr_t**>(client));
 
+	// Tramp hook the funktion hkFrameStageNotify
 	oFrameStageNotify = (FrameStageNotify)TrampHook((char*)clientVTable[37], (char*)hkFrameStageNotify, 9);
 
 	return 0;
@@ -41,6 +46,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID lpReserved) {
 
 	switch (reason) {
 	case DLL_PROCESS_ATTACH:
+		// MainThread
 		CloseHandle(CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)MainThread, hModule, 0, nullptr));
 	case DLL_THREAD_ATTACH:
 	case DLL_THREAD_DETACH:
