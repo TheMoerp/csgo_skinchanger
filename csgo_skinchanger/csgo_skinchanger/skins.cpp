@@ -1,5 +1,8 @@
 #include "skins.h"
 
+
+// SKINS: https://csgostash.com/
+
 // Weapon skins
 int cz75 = 270;
 int desertEagle = 37;
