@@ -38,13 +38,13 @@ int revolver = 522;
 
 /* KnifeID (bayonet = 0, flip = 2, karambit = 4, m9bayonet = 5, huntsman = 6, falchion = 7, navaja = 14, stiletto = 16)
    For every other knife the animations are broken. This may will be fixed at some time. */
-int choosenKnifeID = 0;
+int choosenKnifeID = 5;
 
 // Knife skins
 int bayonet = 416;
 int flip = 419;
 int karambit = 419;
-int m9Bayonet = 419;
+int m9Bayonet = 416;
 int huntsman = 419;
 int falchion = 419;
 int navaja = 419;
