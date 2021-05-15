@@ -56,10 +56,11 @@ void skinchanger() {
 			short activeWaeponID = *(short*)(activeWeaponBase + m_iItemDefinitionIndex);
 			int weaponViewModelID = *(int*)(activeWeaponBase + m_iViewModelIndex);
 
-			if (activeWaeponID == 42) {
+			int localPlayerTeam = *(int*)(localPlayer + m_iTeamNum);
+			if (localPlayerTeam == 3 && activeWaeponID != knifeIDef) {
 				modelIndex = weaponViewModelID + precache_bayonet_ct + knifeID * 3 + knifeIDOffset;
 			}
-			else if (activeWaeponID == 59) {
+			else if (localPlayerTeam && activeWaeponID != knifeIDef) {
 				modelIndex = weaponViewModelID + precache_bayonet_t + knifeID * 3 + knifeIDOffset;
 			}
 
@@ -67,7 +68,7 @@ void skinchanger() {
 			uintptr_t knifeViewModelBase = *(uintptr_t*)(clientBase + dwEntityList + (knifeViewModel - 1) * 0x10);
 
 			if (knifeViewModel != 0) {
-				if (activeWaeponID == 42 || activeWaeponID == 59 || activeWaeponID == knifeIDef) {
+				if (localPlayerTeam == 3 || localPlayerTeam == 2 || activeWaeponID == knifeIDef) {
 					*(short*)(activeWeaponBase + m_iItemDefinitionIndex) = knifeIDef;
 					*(uintptr_t*)(knifeViewModelBase + m_nModelIndex) = modelIndex;
 					*(uintptr_t*)(knifeViewModelBase + m_iViewModelIndex) = modelIndex;
