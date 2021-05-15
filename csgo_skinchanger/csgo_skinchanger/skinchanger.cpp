@@ -12,6 +12,7 @@ using namespace std;
 
 int modelIndex = 0;
 
+
 void skinchanger() {
 	int knifeID = choosenKnifeID;
 	int knifeIDOffset = knifeID < 10 ? 0 : 1;
@@ -27,24 +28,22 @@ void skinchanger() {
 			if (curWeaponBase != 0) {
 				short curWeaponID = *(short*)(curWeaponBase + m_iItemDefinitionIndex);
 
-				int paintKit = getSkinID(curWeaponID);
-				cout << "curWeaponID: " << curWeaponID << endl;
-				cout << "paintkit: " << paintKit << endl;
-				if (paintKit == 0) {
-					continue;
-				}
-
-				*(int*)(curWeaponBase + m_nFallbackPaintKit) = paintKit;
 				*(int*)(curWeaponBase + m_iItemIDHigh) = -1;
 				*(int*)(curWeaponBase + m_nFallbackSeed) = 661;
 				*(float*)(curWeaponBase + m_flFallbackWear) = 0.00001f;
 
 				if (curWeaponID == 42 || curWeaponID == 59 || curWeaponID == knifeIDef) {
 					if (modelIndex > 0) {
+						int paintKit = getSkinID(knifeIDef);
+
 						*(short*)(curWeaponBase + m_iItemDefinitionIndex) = knifeIDef;
+						*(int*)(curWeaponBase + m_nFallbackPaintKit) = paintKit;
 						*(uintptr_t*)(curWeaponBase + m_nModelIndex) = modelIndex;
-						*(uintptr_t*)(curWeaponBase + m_iViewModelIndex) = modelIndex;
 					}
+				}
+				else {
+					int paintKit = getSkinID(curWeaponID);
+					*(int*)(curWeaponBase + m_nFallbackPaintKit) = paintKit;
 				}
 			}
 		}
@@ -61,13 +60,13 @@ void skinchanger() {
 
 				if (activeWaeponID == 42 || (activeWaeponID == knifeIDef && localPlayerTeam == 3)) {
 					modelIndex = weaponViewModelID + precache_bayonet_ct + knifeID * 3 + knifeIDOffset;
-					knifeIDef = 42;
+					knifeIDef = getKnifeItemDefinition(knifeID);
 				}
 				else if (activeWaeponID == 59 || (activeWaeponID == knifeIDef && localPlayerTeam == 2)) {
 					modelIndex = weaponViewModelID + precache_bayonet_t + knifeID * 3 + knifeIDOffset;
-					knifeIDef = 59;
+					knifeIDef = getKnifeItemDefinition(knifeID);
 				}
-				else if (activeWeapon != knifeIDef) {
+				else if (activeWaeponID != knifeIDef) {
 					return;
 				}
 			}
@@ -75,11 +74,8 @@ void skinchanger() {
 			uintptr_t knifeViewModelBase = *(uintptr_t*)(clientBase + dwEntityList + (knifeViewModel - 1) * 0x10);
 
 			if (knifeViewModel != 0) {
-				//if (activeWaeponID == 42 || activeWaeponID == 59 || activeWaeponID == knifeIDef) {
-					*(short*)(activeWeaponBase + m_iItemDefinitionIndex) = knifeIDef;
-					*(uintptr_t*)(knifeViewModelBase + m_nModelIndex) = modelIndex;
-					*(uintptr_t*)(knifeViewModelBase + m_iViewModelIndex) = modelIndex;
-				//}
+				*(short*)(activeWeaponBase + m_iItemDefinitionIndex) = knifeIDef;
+				*(uintptr_t*)(knifeViewModelBase + m_nModelIndex) = modelIndex;
 			}
 		}
 	}
