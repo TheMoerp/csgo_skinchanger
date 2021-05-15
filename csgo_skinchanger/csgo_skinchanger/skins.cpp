@@ -1,5 +1,6 @@
 #include "skins.h"
 
+// weaponskins
 int cz75 = 270;
 int desertEagle = 37;
 int dualBerettas = 625;
@@ -35,7 +36,11 @@ int usps = 1040;
 int m4a1s = 587;
 int revolver = 522;
 
+/* KnifeID (bayonet = 0, flip = 2, karambit = 4, m9bayonet = 5, huntsman = 6, falchion = 7, navaja = 14, stiletto = 16)
+   For every other knife the animations are broken. This may will be fixed at some time. */
 int choosenKnifeID = 0;
+
+// Knife Skins
 int bayonet = 416;
 int flip = 419;
 int karambit = 419;
@@ -46,6 +51,7 @@ int navaja = 419;
 int stiletto = 419;
 
 
+// Get Skin ID by weaponID
 int getSkinID(int weaponID) {
 	switch (weaponID) {
 		case 1:
@@ -140,6 +146,7 @@ int getSkinID(int weaponID) {
 }
 
 
+// Get KnifeItemID by KnifeID
 int getKnifeItemDefinition(int knifeID) {
 	switch (knifeID) {
 	case 0:
