@@ -38,9 +38,9 @@ DWORD WINAPI MainThread(HMODULE hModule) {
 
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID lpReserved) {
-	/*AllocConsole();
+	AllocConsole();
 	FILE* f;
-	freopen_s(&f, "CONOUT$", "w", stdout);*/
+	freopen_s(&f, "CONOUT$", "w", stdout);
 
 	clientBase = (uintptr_t)GetModuleHandle(L"client.dll");
 

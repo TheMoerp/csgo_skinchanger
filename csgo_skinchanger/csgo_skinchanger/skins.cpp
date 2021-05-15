@@ -14,10 +14,10 @@ int p250 = 678;
 int tec9 = 179;
 int ak47 = 44;
 int aug = 690;
-int awp = 344;
+int awp = 736;
 int famas = 919;
 int g3sg1 = 712;
-int galilAr = 1038;
+int galilAr = 398;
 int m4a4 = 309;
 int scar20 = 597;
 int sg553 = 897;
@@ -85,7 +85,7 @@ int getSkinID(int weaponID) {
 			return mac10;
 		case 19:
 			return p90;
-		case 262167:
+		case 23:
 			return mp5sd;
 		case 24:
 			return ump45;
@@ -117,13 +117,13 @@ int getSkinID(int weaponID) {
 			return sg553;
 		case 40:
 			return ssg08;
-		case 262207:
+		case 63:
 			return cz75;
-		case 262205:
+		case 61:
 			return usps;
-		case 262204:
+		case 60:
 			return m4a1s;
-		case 262208:
+		case 64:
 			return revolver;
 		case 500:
 			return bayonet;

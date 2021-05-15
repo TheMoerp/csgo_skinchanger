@@ -29,7 +29,7 @@ void skinchanger() {
 
 			if (curWeaponBase != 0) {
 				short curWeaponID = *(short*)(curWeaponBase + m_iItemDefinitionIndex);
-
+				cout << curWeaponID << endl;
 				// Sets everything but skin, modelindex, knifeItemID
 				*(int*)(curWeaponBase + m_iItemIDHigh) = -1;
 				*(int*)(curWeaponBase + m_nFallbackSeed) = 661;
