@@ -1,6 +1,6 @@
 #include "skins.h"
 
-// weaponskins
+// Weapon skins
 int cz75 = 270;
 int desertEagle = 37;
 int dualBerettas = 625;
@@ -40,7 +40,7 @@ int revolver = 522;
    For every other knife the animations are broken. This may will be fixed at some time. */
 int choosenKnifeID = 0;
 
-// Knife Skins
+// Knife skins
 int bayonet = 416;
 int flip = 419;
 int karambit = 419;
