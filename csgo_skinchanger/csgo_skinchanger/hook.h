@@ -1,7 +1,6 @@
 #pragma once
 #include <Windows.h>
 
-void Patch(BYTE* dst, BYTE* src, unsigned int size);
 
 bool Hook(char* src, char* dst, int len);
 
@@ -18,6 +17,6 @@ enum ClientFrameStage_t : int {
     FRAME_RENDER_END
 };
 
-typedef void* (__cdecl* tCreateInterface)(const char* name, int* returnCode);
-
 typedef void(_stdcall* FrameStageNotify)(ClientFrameStage_t curStage);
+
+typedef void* (__cdecl* tCreateInterface)(const char* name, int* returnCode);

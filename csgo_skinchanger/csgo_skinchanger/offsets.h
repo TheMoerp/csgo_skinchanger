@@ -13,6 +13,6 @@ const DWORD m_nModelIndex = 0x258;
 const DWORD m_iViewModelIndex = 0x3240;
 const DWORD m_hActiveWeapon = 0x2EF8;
 const DWORD m_hViewModel = 0x32F8;
-const DWORD dwLocalPlayer = 0xD8D2CC;
 
+const DWORD dwLocalPlayer = 0xD8D2CC;
 const DWORD dwEntityList = 0x4DA521C;

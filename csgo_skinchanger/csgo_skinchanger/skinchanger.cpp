@@ -1,13 +1,19 @@
 #include "skinchanger.h"
 #include "skins.h"
+#include <iostream>
+
+#define precache_bayonet_ct 90
+#define precache_bayonet_t 65
 
 extern uintptr_t clientBase;
+extern int choosenKnifeID;
+
+using namespace std;
 
 int modelIndex = 0;
 
-
 void skinchanger() {
-	int knifeID = knifeID;
+	int knifeID = choosenKnifeID;
 	int knifeIDOffset = knifeID < 10 ? 0 : 1;
 	int knifeIDef = getKnifeItemDefinition(knifeID);
 
@@ -17,23 +23,21 @@ void skinchanger() {
 		for (int i = 0; i < 8; i++) {
 			uintptr_t curWeapon = *(uintptr_t*)(localPlayer + m_hMyWeapons + i * 0x4) & 0xFFF;
 			uintptr_t curWeaponBase = *(uintptr_t*)(clientBase + dwEntityList + (curWeapon - 1) * 0x10);
-
 			if (curWeaponBase != 0) {
 				short curWeaponID = *(short*)(curWeaponBase + m_iItemDefinitionIndex);
-
 				int curPaintKit = *(int*)(curWeaponBase + m_nFallbackPaintKit);
 				int paintKit = 72;
-
+				cout << "curWeaponID: " << curWeaponID << endl;
 				if (curWeaponID == 42 || curWeaponID == 59 || curWeaponID == knifeIDef) {
 					if (modelIndex > 0) {
-						paintKit = getKnifeSkin(knifeID);
+						paintKit = getSkinID(knifeID, true);
 						*(short*)(curWeaponBase + m_iItemDefinitionIndex) = knifeIDef;
 						*(uintptr_t*)(curWeaponBase + m_nModelIndex) = modelIndex;
 						*(uintptr_t*)(curWeaponBase + m_iViewModelIndex) = modelIndex;
 					}
 				}
 				else {
-					paintKit = getSkin(curWeaponID);
+					paintKit = getSkinID(curWeaponID, false);
 				}
 
 				if (curPaintKit != paintKit && curPaintKit != -1) {

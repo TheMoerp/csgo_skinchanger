@@ -5,6 +5,8 @@
 #include "hook.h"
 #include "skinchanger.h"
 
+using namespace std;
+
 
 uintptr_t clientBase;
 FrameStageNotify oFrameStageNotify = nullptr;
@@ -20,20 +22,21 @@ void _stdcall hkFrameStageNotify(ClientFrameStage_t curStage) {
 
 
 DWORD WINAPI MainThread(HMODULE hModule) {
-	tCreateInterface clientFact = (tCreateInterface)GetProcAddress(GetModuleHandleA("client.dll"), "CreateInterface");
-	void* client = clientFact("VClient018", NULL);
+	tCreateInterface clientFactory = (tCreateInterface)GetProcAddress(GetModuleHandleA("client.dll"), "CreateInterface");
+	void* client = clientFactory("VClient018", NULL);
 	uintptr_t* clientVTable = (*reinterpret_cast<uintptr_t**>(client));
 
-	oFrameStageNotify = (FrameStageNotify)TrampHook((char*)vTable[37], (char*)hkFrameStageNotify, 9);
+	oFrameStageNotify = (FrameStageNotify)TrampHook((char*)clientVTable[37], (char*)hkFrameStageNotify, 9);
 
 	return 0;
 }
 
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID lpReserved) {
-	/*AllocConsole();
+	AllocConsole();
 	FILE* f;
-	freopen_s(&f, "CONOUT$", "w", stdout);*/
+	freopen_s(&f, "CONOUT$", "w", stdout);
+
 	clientBase = (uintptr_t)GetModuleHandle(L"client.dll");
 
 	switch (reason) {
