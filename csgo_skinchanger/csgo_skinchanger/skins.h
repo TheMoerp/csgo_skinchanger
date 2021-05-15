@@ -1,5 +1,5 @@
 #pragma once
 
-int getSkinID(int weaponID, bool isKnife);
+int getSkinID(int weaponID);
 
 int getKnifeItemDefinition(int knifeID);

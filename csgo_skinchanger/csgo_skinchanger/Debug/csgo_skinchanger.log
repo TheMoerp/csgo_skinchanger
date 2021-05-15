@@ -1,2 +1,3 @@
-﻿  skinchanger.cpp
+﻿  skins.cpp
+C:\Users\matth\Documents\Workspace\Game_Cheats\csgo_skinchanger\csgo_skinchanger\csgo_skinchanger\skins.cpp(143): warning C4715: "getKnifeItemDefinition": Nicht alle Codepfade geben einen Wert zurück.
   csgo_skinchanger.vcxproj -> C:\Users\matth\Documents\Workspace\Game_Cheats\csgo_skinchanger\csgo_skinchanger\Debug\csgo_skinchanger.dll
