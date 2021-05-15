@@ -25,9 +25,10 @@ void skinchanger() {
 			uintptr_t curWeaponBase = *(uintptr_t*)(clientBase + dwEntityList + (curWeapon - 1) * 0x10);
 			if (curWeaponBase != 0) {
 				short curWeaponID = *(short*)(curWeaponBase + m_iItemDefinitionIndex);
+
 				int curPaintKit = *(int*)(curWeaponBase + m_nFallbackPaintKit);
 				int paintKit = 72;
-				cout << "curWeaponID: " << curWeaponID << endl;
+
 				if (curWeaponID == 42 || curWeaponID == 59 || curWeaponID == knifeIDef) {
 					if (modelIndex > 0) {
 						paintKit = getSkinID(knifeID, true);
@@ -48,7 +49,6 @@ void skinchanger() {
 				}
 			}
 		}
-
 		uintptr_t activeWeapon = *(uintptr_t*)(localPlayer + m_hActiveWeapon) & 0xFFF;
 		uintptr_t activeWeaponBase = *(uintptr_t*)(clientBase + dwEntityList + (activeWeapon - 1) * 0x10);
 
