@@ -3,4 +3,4 @@ This is a very basic internal csgo skinchanger. It does not include any patterns
 
 You can adjust the skinlayout in the `skins.cpp` file.
 
-**Although it's very unlikely you can get banned by using this cheat. Use it at your own rist and I do not take any responsibility.!!!**
+**Although it's very unlikely to happen you can get banned by using this cheat. So Use it at your own risk!!!**
