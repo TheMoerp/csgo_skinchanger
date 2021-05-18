@@ -4,6 +4,9 @@ This is a very basic internal csgo skinchanger. It does not include any patterns
 
 ![Preview](https://github.com/TheMoerp/csgo_skinchanger/blob/main/images/awp.png)
 
+![Preview](https://github.com/TheMoerp/csgo_skinchanger/blob/main/images/ak47.png)
+
+![Preview](https://github.com/TheMoerp/csgo_skinchanger/blob/main/images/knife.png)
 
 You can adjust the skinlayout in the `skins.cpp` file.
 
