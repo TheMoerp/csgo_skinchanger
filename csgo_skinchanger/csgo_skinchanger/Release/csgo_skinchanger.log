@@ -1,0 +1,6 @@
+﻿  dllmain.cpp
+  hook.cpp
+  skinchanger.cpp
+  skins.cpp
+MSVCRT.lib(exe_main.obj) : error LNK2001: Nicht aufgelöstes externes Symbol "_main".
+C:\Users\matth\Documents\Workspace\Game_Cheats\csgo_skinchanger\csgo_skinchanger\Release\csgo_skinchanger.exe : fatal error LNK1120: 1 nicht aufgelöste Externe
